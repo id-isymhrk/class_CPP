@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <bitset>
+#include <climits>
 
 using namespace std;
 
-vector<unsigned long> test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+vector<unsigned long> test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 105, 44, 64};
 
 int parity(unsigned long val)
 {
@@ -24,6 +25,7 @@ int main()
     {
         cout << "input:" << test[i] << endl;
         cout << "input:" << bitset<8>(test[i]) << endl;
+        cout << "input:" << bitset<sizeof(long) * CHAR_BIT>(test[i]) << endl;
         cout << "result:" << parity(test[i]) << endl;
         cout << endl;
     }
