@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<unsigned long> test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 105, 44, 64};
+vector<unsigned long> test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 105, 44, 64, 4294967295};
 
 int parity(unsigned long val)
 {
@@ -16,7 +16,7 @@ int parity(unsigned long val)
     val ^= val >> 2;
     val ^= val >> 1;
 
-    return val & 0x00000001;
+    return 0x00000001 & (val ^ 0x00000001);
 }
 
 int main()
