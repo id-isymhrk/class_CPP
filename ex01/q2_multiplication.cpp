@@ -5,23 +5,8 @@
 
 using namespace std;
 
-// bitset<sizeof(unsigned long)> Multiplication(unsigned long a1, unsigned long b1)
-// {
-//     // unsigned long ans;
-//     // bitset<sizeof(unsigned long)> a2 = bitset<sizeof(unsigned long)>(a1);
-//     // bitset<sizeof(unsigned long)> b2 = bitset<sizeof(unsigned long)>(b1);
-//     // unsigned long divide = sizeof(unsigned long);
-
-//     bitset<sizeof(unsigned long)> ans = 0x00000000;
-//     ans = bitset<sizeof(unsigned long)>(a1 * b1);
-
-//     return ans;
-// }
-
 void Multiplication(unsigned long a1, unsigned long b1)
 {
-
-    // vector<vector<int>> calc;
     vector<int> calc;
 
     // init
@@ -34,19 +19,19 @@ void Multiplication(unsigned long a1, unsigned long b1)
     // bit calc
     for (int i = 0; i < sizeof(unsigned long); i++)
     {
+
         if (a1 & 1 << i)
         {
             for (int j = 0; j < sizeof(unsigned long); j++)
             {
-                // calc[i][j] += (b1 & 1 << j);
                 if (b1 & 1 << j)
-                    calc[j + i]++;
+                    calc[j + i]++; //桁をずらして加算していく
+
                 // cout << "test:calc[" << j + i << "]=" << calc[j + i] << endl;
             }
-
-            // calc[i + 1][j] = calc[i][j]
         }
 
+        //桁上げの処理
         calc[i + 1] += calc[i] / 2;
         calc[i] = calc[i] % 2;
     }
