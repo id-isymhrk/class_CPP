@@ -3,12 +3,7 @@
 
 using namespace std;
 
-const Point POINT_NULL;
-
-Stack::Stack(int max_size)
-    : _max_size(max_size), _top(-1), _data(new Point[max_size])
-{
-}
+const Point POINT_NULL{-100, -100};
 
 // Check whether the stack is empty
 bool Stack::empty()
