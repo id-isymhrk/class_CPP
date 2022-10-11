@@ -3,6 +3,8 @@
 
 using namespace std;
 
+const Point POINT_NULL;
+
 Stack::Stack(int max_size)
     : _max_size(max_size), _top(-1), _data(new Point[max_size])
 {
@@ -47,6 +49,7 @@ void Stack::pop()
 {
     try
     {
+        _data[_top] = POINT_NULL;
         _top--;
     }
     catch (const std::exception &e)
