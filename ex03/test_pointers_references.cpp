@@ -104,8 +104,12 @@ int main(void)
     cout << endl;
     cout << "-----5-----" << endl;
     // 17. Create a reference to the variable f (1. above). Name it rf
+    float **rf = &f;
     // 18. Assign the value 2.71828 to rf
+    **rf = 2.71828;
     // 19. Print out the value of f and rf and verify that they are equal
+    cout << "f:" << *f << endl;
+    cout << "rf:" << **rf << endl;
 
     return 0;
 }
