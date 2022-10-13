@@ -16,6 +16,7 @@ int main(void)
     f = &pi;
     // 4. Print out the content of the memory location pointed to by f
     cout << "f: " << f << endl;
+    cout << "*f:" << *f << endl;
 
     cout << endl;
     cout << "-----2-----" << endl;
@@ -87,11 +88,12 @@ int main(void)
             dd[i][j] = double(i) * double(j);
         }
     }
+    // output(myself)
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            cout << "i:" << i << "j:" << j << " dd:" << dd[i][j] << endl;
+            cout << "i:" << i << " j:" << j << " = dd:" << dd[i][j] << endl;
         }
     }
     // 16. Delete the memory allocated for the 2d array
