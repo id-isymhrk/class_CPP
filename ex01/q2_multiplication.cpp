@@ -48,14 +48,18 @@ void Multiplication(unsigned long a1, unsigned long b1)
     cout << endl;
 }
 
-void Add(unsigned long &a2, int digit)
+void Add(unsigned long &a2, int digit_)
 {
     int tmp = a2;
+    unsigned long digit = digit_;
     if (tmp >> digit & 1) //該当の桁が既に１かどうかの判定
     {
         //桁上げ
         a2 ^= 1 << digit;
-        Add(a2, digit + 1);
+
+        //ひとつ上の桁でも桁上げが生じるか計算する
+        Add(digit, 0); //算術演算子が使えないのでAddで次の桁を指せる準備
+        Add(a2, digit);
     }
     else
     {
