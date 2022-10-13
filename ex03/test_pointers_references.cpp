@@ -1,22 +1,45 @@
 // test_pointers.cpp
 // COMPLETE include necessary headers
+#include <iostream>
+
+using namespace std;
+
 int main(void)
 {
+    cout << "-----1-----" << endl;
     //
     // 1. Declare a variable f as a pointer to a float
+    float *f;
     // 2. Create a float variable named pi, and store the value 3.14159f
+    float pi = 3.14159f;
     // 3. Make f points to pi
+    f = &pi;
     // 4. Print out the content of the memory location pointed to by f
+    cout << "f: " << f << endl;
 
+    cout << endl;
+    cout << "-----2-----" << endl;
     //
     short a[] = {5, 4, 3, 2, 1};
     // 5. Declare a variable ip as a pointer to a short integer
+    short *ip;
     // 6. Make ip points to the beginning of the array a
+    ip = a;
     // 7. Print out what ip points to and the content of a[0] (verify they are the same)
+    cout << "a[0]: " << a[0] << endl;
+    cout << "ip  : " << *ip << endl;
     // 8. Increase ip by 2 and check that what it points to corresponds to a[2]
+    ip += 2;
+    cout << "a[2]: " << a[2] << endl;
+    cout << "ip  : " << *ip << endl;
     // 9. Make ip points to the last element of the array by increasing it by 2
     //     and check that what it points to corresponds to a[4]
+    ip += 2;
+    cout << "a[4]: " << a[4] << endl;
+    cout << "ip  : " << *ip << endl;
 
+    cout << endl;
+    cout << "-----3-----" << endl;
     //
     int n = 20;
     // 10. Declare a variable d as a pointer to double and
@@ -25,6 +48,8 @@ int main(void)
     // 12. Print out each element of d
     // 13. Delete the previously allocated memory
 
+    cout << endl;
+    cout << "-----4-----" << endl;
     //
     int m = 5;
     n = 10;
