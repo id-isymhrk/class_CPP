@@ -5,6 +5,8 @@
 
 using namespace std;
 
+const int MAX_BIT = 64;
+
 void Multiplication(unsigned long a1, unsigned long b1)
 {
     vector<int> calc;
@@ -66,18 +68,22 @@ void Add(unsigned long &a2, int digit)
 
 void Multiplication2(unsigned long a1, unsigned long b1)
 {
-    unsigned long ans = 0, tmp = 0;
-
+    unsigned long ans = 0;
+    unsigned long tmp_a, tmp_b;
     // bit calc
-    for (int i = 0; i < sizeof(unsigned long); i++)
+    for (int i = 0; i < MAX_BIT; i++)
     {
+        tmp_a = a1;
 
-        if (a1 & 1 << i)
+        // if (a1 & 1 << i)
+        if (tmp_a >> i & 1)
         {
-            tmp = ans;
-            for (int j = 0; j < sizeof(unsigned long); j++)
+            // tmp = ans;
+            for (int j = 0; j < MAX_BIT; j++)
             {
-                if (b1 & 1 << j)
+                tmp_b = b1;
+                // if (b1 & 1 << j)
+                if (tmp_b >> j & 1)
                 {
                     // cout << "i=" << i << " j=" << j << "  Call Add" << endl;
                     Add(ans, i + j);
@@ -88,7 +94,7 @@ void Multiplication2(unsigned long a1, unsigned long b1)
 
     // output
     cout << "answer(bit)    :";
-    cout << bitset<sizeof(unsigned long) * CHAR_BIT>(ans);
+    cout << bitset<MAX_BIT>(ans);
     cout << endl;
 }
 
@@ -96,20 +102,20 @@ int main()
 {
     // vector<unsigned long> test1 = {1, 3};
     // vector<unsigned long> test2 = {1, 2};
-    vector<unsigned long> test1 = {1, 5, 10, 12, 33, 51, 2, 100};
-    vector<unsigned long> test2 = {1, 4, 11, 6, 3, 20, 4, 8};
+    vector<unsigned long> test1 = {1, 5, 10, 12, 33, 51, 2, 100, 682};
+    vector<unsigned long> test2 = {1, 4, 11, 6, 3, 20, 4, 8, 1365};
     const int LOOP_NUM = test1.size() > test2.size() ? test1.size() : test2.size();
 
     for (int i = 0; i < LOOP_NUM; i++)
     {
         cout << "----------" << endl;
         // cout << "test1:" << test1[i] << endl;
-        cout << "test1(bit):" << bitset<sizeof(unsigned long)>(test1[i]) << endl;
+        cout << "test1(bit):" << bitset<MAX_BIT>(test1[i]) << endl;
         // cout << "test2:" << test2[i] << endl;
-        cout << "test2(bit):" << bitset<sizeof(unsigned long)>(test2[i]) << endl;
+        cout << "test2(bit):" << bitset<MAX_BIT>(test2[i]) << endl;
         cout << "answer:" << test1[i] * test2[i] << endl;
-        cout << "answer(default):" << bitset<sizeof(unsigned long) * CHAR_BIT>(test1[i] * test2[i]) << endl;
-        Multiplication(test1[i], test2[i]);
+        cout << "answer(default):" << bitset<MAX_BIT>(test1[i] * test2[i]) << endl;
+        // Multiplication(test1[i], test2[i]);
         Multiplication2(test1[i], test2[i]);
     }
 
