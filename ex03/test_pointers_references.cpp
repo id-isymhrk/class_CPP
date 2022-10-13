@@ -44,9 +44,26 @@ int main(void)
     int n = 20;
     // 10. Declare a variable d as a pointer to double and
     // make it point to an array of "n" element of type "double" created on the heap
+    double *d;
+    d = new double[n];
     // 11. Store in each d[i] (for i=0 to n-1) the value double(i) / 5.0;
+    for (int i = 0; i < n; i++)
+    {
+        // *d = (double)i / 5.0;
+        // cout << i << "]input: " << *d << endl;
+        // d++;
+        d[i] = (double)i / 5.0;
+        cout << i << "]input: " << d[i] << endl;
+    }
     // 12. Print out each element of d
+    // d -= n;
+    for (int i = 0; i < n; i++)
+    {
+        cout << i << ":" << d[i] << endl;
+    }
+
     // 13. Delete the previously allocated memory
+    delete[] d;
 
     cout << endl;
     cout << "-----4-----" << endl;
