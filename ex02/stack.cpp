@@ -27,30 +27,50 @@ int Stack::size()
 // print an error message on std::cerr when overflow
 void Stack::push(Point point)
 {
-    try
+    if (full())
+    {
+        cout << "Stack is full. Don't push!" << endl;
+    }
+    else
     {
         _top++;
         _data[_top] = point;
     }
-    catch (const std::exception &e)
-    {
-        cerr << "Stack is full. Don't push!" << e.what() << endl;
-    }
+
+    // try
+    // {
+    //     _top++;
+    //     _data[_top] = point;
+    // }
+    // catch (const std::exception &e)
+    // {
+    //     cerr << "Stack is full. Don't push!" << e.what() << endl;
+    // }
 }
 
 // Remove element on top
 // print an error message on std::cerr when underflow
 void Stack::pop()
 {
-    try
+    if (empty())
+    {
+        cout << "Stack is empty. Don't pop!" << endl;
+    }
+    else
     {
         _data[_top] = POINT_NULL;
         _top--;
     }
-    catch (const std::exception &e)
-    {
-        cerr << "Stack is empty. Don't pop!" << e.what() << endl;
-    }
+
+    // try
+    // {
+    //     _data[_top] = POINT_NULL;
+    //     _top--;
+    // }
+    // catch (const std::exception &e)
+    // {
+    //     cerr << "Stack is empty. Don't pop!" << e.what() << endl;
+    // }
 }
 
 // Acces the topmost element
