@@ -7,12 +7,12 @@ int main()
 {
     // COMPLETE
     // Write tests for testing your Stack implementation.
-    const int max_size = 10;
-    Point test_point[max_size];
-    Stack test_stack(max_size - 1);
+    const int MAX_SIZE = 10;
+    Point test_point[MAX_SIZE];
+    Stack test_stack(MAX_SIZE - 1);
 
     // init
-    for (int i = 0; i < max_size; i++)
+    for (int i = 0; i < MAX_SIZE; i++)
     {
         test_point[i] = Point{i, i * 2};
 
@@ -31,7 +31,7 @@ int main()
     cout << endl;
     cout << endl;
 
-    for (int i = max_size - 1; i >= 0; i--)
+    for (int i = MAX_SIZE - 1; i >= 0; i--)
     {
         cout << "----------" << endl;
         cout << " test_point: " << test_point[i].x << ", " << test_point[i].y << endl;
