@@ -41,7 +41,7 @@ public:
     // Insert element on top
     // print an error message on std::cerr when overflow
     // (the implementation will go in stack.cpp)
-    void push(Point);
+    void push(const Point);
 
     // Remove element on top
     // print an error message on std::cerr when underflow
@@ -50,6 +50,6 @@ public:
 
     // Acces the topmost element
     // (the implementation will go in stack.cpp)
-    Point top();
+    Point top() const;
 };
 #endif
