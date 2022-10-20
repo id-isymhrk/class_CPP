@@ -54,6 +54,8 @@ int main(void)
     cout << "-----------" << endl;
     cout << endl;
 
+    cout << "---stack2---" << endl;
+    // result(stack2);
     cout << endl
          << endl
          << endl;
@@ -108,17 +110,23 @@ int main(void)
     cout << endl;
 
     cout << "---stack1---" << endl;
-    result(stack1);
+    stack1.show_items();
+    // result(stack1);
     cout << "---stack2---" << endl;
-    result(stack2);
+    stack2.show_items();
+    // result(stack2);
     cout << "---stack3---" << endl;
-    result(stack3);
+    stack3.show_items();
+    // result(stack3);
     cout << "---stack4---" << endl;
-    result(stack4);
+    stack4.show_items();
+    // result(stack4);
     cout << "---stack5---" << endl;
-    result(stack5);
+    stack5.show_items();
+    // result(stack5);
     cout << "---stack6---" << endl;
-    result(stack6);
+    stack6.show_items();
+    // result(stack6);
 
     return 0;
 }

@@ -104,6 +104,11 @@ public:
 
     void show_items()
     {
+        for (int i = 0; i < size(); i++)
+        {
+            std::cout << i << ":" << _items[i] << std::endl;
+        }
+        std::cout << "----------" << std::endl;
     }
 };
 
