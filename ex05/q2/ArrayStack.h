@@ -101,6 +101,10 @@ public:
 
     // Return the number of elements in the stack
     int size() const { return _num_items; }
+
+    void show_items()
+    {
+    }
 };
 
 #endif // ARRAY_STACK_H
