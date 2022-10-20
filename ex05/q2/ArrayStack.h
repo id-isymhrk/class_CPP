@@ -54,23 +54,14 @@ public:
         // _items = nullptr;
         // resize(_allocated_size);
     }
-
-    ArrayStack(ArrayStack &stack)
+    // copy
+    ArrayStack(const ArrayStack &stack)
+        : _num_items(stack._num_items), _allocated_size(stack._allocated_size)
     {
-        ArrayStack tmp(stack.size());
-
-        for (int i = 0; !stack.empty(); i++)
-        {
-            tmp.push(stack.top());
-            stack.pop();
-        }
-
         _items = new std::string[stack.size()];
-        for (int i = 0; !tmp.empty(); i++)
+        for (int i = 0; i < stack.size(); ++i)
         {
-            this->push(tmp.top());
-            stack.push(tmp.top());
-            tmp.pop();
+            _items[i] = stack._items[i];
         }
     }
 
