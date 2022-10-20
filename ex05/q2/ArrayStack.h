@@ -50,15 +50,14 @@ public:
          * and make _items point to it */
         _num_items = 0;
         _allocated_size = allocated_size;
-        // _items = new std::string[allocated_size];
-        _items = nullptr;
-        resize(_allocated_size);
+        _items = new std::string[allocated_size];
+        // _items = nullptr;
+        // resize(_allocated_size);
     }
 
     // explicit ArrayStack(ArrayStack &stack)
     // {
-    //     _items = nullptr;
-    //     resize(stack.size());
+    //     _items = new std::string[stack.size()];
 
     //     for (int i = 0; !stack.empty(); i++)
     //     {
@@ -102,14 +101,14 @@ public:
     // Return the number of elements in the stack
     int size() const { return _num_items; }
 
-    void show_items()
-    {
-        for (int i = 0; i < size(); i++)
-        {
-            std::cout << i << ":" << _items[i] << std::endl;
-        }
-        std::cout << "----------" << std::endl;
-    }
+    // void show_items()
+    // {
+    //     for (int i = 0; i < size(); i++)
+    //     {
+    //         std::cout << i << ":" << _items[i] << std::endl;
+    //     }
+    //     std::cout << "----------" << std::endl;
+    // }
 };
 
 #endif // ARRAY_STACK_H
