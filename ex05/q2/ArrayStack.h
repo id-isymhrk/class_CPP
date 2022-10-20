@@ -69,7 +69,7 @@ public:
     ~ArrayStack()
     {
         // COMPLETE
-        // delete[] _items;
+        delete[] _items;
     }
 
     // Push item to the stack
