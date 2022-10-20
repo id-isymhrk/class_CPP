@@ -55,16 +55,24 @@ public:
         // resize(_allocated_size);
     }
 
-    // explicit ArrayStack(ArrayStack &stack)
-    // {
-    //     _items = new std::string[stack.size()];
+    ArrayStack(ArrayStack &stack)
+    {
+        ArrayStack tmp(stack.size());
 
-    //     for (int i = 0; !stack.empty(); i++)
-    //     {
-    //         push(stack.top());
-    //         stack.pop();
-    //     }
-    // }
+        for (int i = 0; !stack.empty(); i++)
+        {
+            tmp.push(stack.top());
+            stack.pop();
+        }
+
+        _items = new std::string[stack.size()];
+        for (int i = 0; !tmp.empty(); i++)
+        {
+            this->push(tmp.top());
+            stack.push(tmp.top());
+            tmp.pop();
+        }
+    }
 
     // Destructor:
     ~ArrayStack()

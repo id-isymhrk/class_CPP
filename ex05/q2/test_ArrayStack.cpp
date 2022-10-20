@@ -118,16 +118,16 @@ int main(void)
     // cout << "---stack2---" << endl;
     // stack2.show_items();
     // // result(stack2);
-    // cout << "---stack3---" << endl;
+    // cout << "---stack3(stack1)---" << endl;
     // stack3.show_items();
     // // result(stack3);
-    // cout << "---stack4---" << endl;
+    // cout << "---stack4=stack2---" << endl;
     // stack4.show_items();
     // // result(stack4);
-    // cout << "---stack5---" << endl;
+    // cout << "---stack5=stack1---" << endl;
     // stack5.show_items();
     // // result(stack5);
-    // cout << "---stack6---" << endl;
+    // cout << "---stack6(new)---" << endl;
     // stack6.show_items();
     // // result(stack6);
 
