@@ -55,11 +55,23 @@ public:
         resize(_allocated_size);
     }
 
+    // explicit ArrayStack(ArrayStack &stack)
+    // {
+    //     _items = nullptr;
+    //     resize(stack.size());
+
+    //     for (int i = 0; !stack.empty(); i++)
+    //     {
+    //         push(stack.top());
+    //         stack.pop();
+    //     }
+    // }
+
     // Destructor:
     ~ArrayStack()
     {
         // COMPLETE
-        delete[] _items;
+        // delete[] _items;
     }
 
     // Push item to the stack
