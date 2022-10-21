@@ -59,12 +59,14 @@ int main(void)
     ArrayStack stack4 = stack2;
 
     cout << "---stack3---" << endl;
+    cout << "stack3(stack1)" << endl;
     // result(stack3);
     cout << endl
          << endl
          << endl;
 
     cout << "---stack4---" << endl;
+    cout << "stack4 = stack2" << endl;
     // result(stack4);
     cout << endl
          << endl
@@ -75,6 +77,7 @@ int main(void)
     stack5 = stack1;
 
     cout << "---stack5---" << endl;
+    cout << "stack5 = stack1" << endl;
     // result(stack5);
     cout << endl
          << endl
@@ -91,7 +94,7 @@ int main(void)
     // Push several items in 'stack6'.
     string test6[SIZE_S6] = {"0:ex05", "1:q2", "2:stack1", "3:stack2", "4:stack3", "5:stack4", "6:stack5", "7:stack6", "8", "9"};
 
-    cout << "---stack6 push---" << endl;
+    cout << "---stack6---" << endl;
     for (int i = 0; i < SIZE_S6; i++)
     {
         cout << test6[i] << endl;
@@ -108,9 +111,19 @@ int main(void)
          << endl;
 
     // Move
+    cout << "---stack7---" << endl;
+    cout << "stack7 = std::move(stack5)" << endl;
     ArrayStack stack7 = std::move(stack5);
+    cout << endl
+         << endl
+         << endl;
 
+    cout << "---stack6---" << endl;
+    cout << "stack6 = std::move(stack2)" << endl;
     stack6 = std::move(stack2);
+    cout << endl
+         << endl
+         << endl;
 
     // COMPLETE
     // Write tests to check your implementation of the move semantic.
