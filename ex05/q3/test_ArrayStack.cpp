@@ -14,7 +14,7 @@ int main(void)
     ArrayStack stack1;
     vector<string> test1 = {"University", "of", "Aizu"};
 
-    cout << "---stack1 push---" << endl;
+    cout << "---stack1---" << endl;
     for (int i = 0; i < test1.size(); i++)
     {
         cout << test1[i] << endl;
@@ -27,9 +27,6 @@ int main(void)
     cout << "-----------" << endl;
     cout << endl;
 
-    cout << "---stack1---" << endl;
-    // result(stack1);
-
     cout << endl;
     cout << endl;
     cout << endl;
@@ -41,7 +38,7 @@ int main(void)
     ArrayStack stack2(SIZE_S2);
     string test2[SIZE_S2] = {"1:Aizu", "2:Hukushima", "3:Tohoku", "4:Japan", "5:Earth"};
 
-    cout << "---stack2 push---" << endl;
+    cout << "---stack2---" << endl;
     for (int i = 0; i < SIZE_S2; i++)
     {
         cout << test2[i] << endl;
@@ -54,8 +51,6 @@ int main(void)
     cout << "-----------" << endl;
     cout << endl;
 
-    cout << "---stack2---" << endl;
-    // result(stack2);
     cout << endl
          << endl
          << endl;
@@ -112,25 +107,6 @@ int main(void)
          << endl
          << endl;
 
-    // cout << "---stack1---" << endl;
-    // stack1.show_items();
-    // // result(stack1);
-    // cout << "---stack2---" << endl;
-    // stack2.show_items();
-    // // result(stack2);
-    // cout << "---stack3(stack1)---" << endl;
-    // stack3.show_items();
-    // // result(stack3);
-    // cout << "---stack4=stack2---" << endl;
-    // stack4.show_items();
-    // // result(stack4);
-    // cout << "---stack5=stack1---" << endl;
-    // stack5.show_items();
-    // // result(stack5);
-    // cout << "---stack6(new)---" << endl;
-    // stack6.show_items();
-    // // result(stack6);
-
     // Move
     ArrayStack stack7 = std::move(stack5);
 
@@ -138,6 +114,42 @@ int main(void)
 
     // COMPLETE
     // Write tests to check your implementation of the move semantic.
+
+    cout << "---stack1---" << endl;
+    stack1.show_items();
+    cout << "size:" << stack1.size() << endl;
+    cout << endl;
+    // result(stack1);
+    cout << "---stack2---" << endl;
+    stack2.show_items();
+    cout << "size:" << stack2.size() << endl;
+    cout << endl;
+    // result(stack2);
+    cout << "---stack3(stack1)---" << endl;
+    stack3.show_items();
+    cout << "size:" << stack3.size() << endl;
+    cout << endl;
+    // result(stack3);
+    cout << "---stack4=stack2---" << endl;
+    stack4.show_items();
+    cout << "size:" << stack4.size() << endl;
+    cout << endl;
+    // result(stack4);
+    cout << "---stack5=stack1---" << endl;
+    stack5.show_items();
+    cout << "size:" << stack5.size() << endl;
+    cout << endl;
+    // result(stack5);
+    cout << "---stack6(stack2)---" << endl;
+    stack6.show_items();
+    cout << "size:" << stack6.size() << endl;
+    cout << endl;
+    // result(stack6);
+    cout << "---stack7(stack5)---" << endl;
+    stack7.show_items();
+    cout << "size:" << stack7.size() << endl;
+    cout << endl;
+    // result(stack6);
 
     return 0;
 }

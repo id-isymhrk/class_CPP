@@ -55,43 +55,83 @@ public:
         // resize(_allocated_size);
     }
     // copy
-    ArrayStack(ArrayStack &stack)
-        : _allocated_size(stack._allocated_size)
+    ArrayStack(const ArrayStack &stack)
     {
-        ArrayStack tmp(stack.size());
-
-        for (int i = 0; !stack.empty(); i++)
-        {
-            tmp.push(stack.top());
-            stack.pop();
-        }
-
+        _num_items = stack._num_items;
+        _allocated_size = stack._allocated_size;
         _items = new std::string[stack.size()];
-        for (int i = 0; !tmp.empty(); i++)
+        for (int i = 0; i < stack.size(); ++i)
         {
-            this->push(tmp.top());
-            stack.push(tmp.top());
-            tmp.pop();
+            _items[i] = stack._items[i];
         }
     }
 
-    // move
-    ArrayStack &operator+(ArrayStack &&stack)
+    ArrayStack &operator=(ArrayStack &stack)
     {
-        ArrayStack tmp(stack.size());
-
-        for (int i = 0; !stack.empty(); i++)
+        if (this != &stack)
         {
-            tmp.push(stack.top());
-            stack.pop();
+            delete[] _items;
+            _num_items = stack._num_items;
+            _allocated_size = stack._allocated_size;
+            _items = new std::string[stack.size()];
+            for (int i = 0; i < stack.size(); ++i)
+            {
+                _items[i] = stack._items[i];
+            }
         }
+        return *this;
+    }
+
+    // move
+    ArrayStack(ArrayStack &&stack)
+    {
+        std::cout << "move!" << std::endl;
+        delete[] _items;
+        _num_items = 0;
+        _allocated_size = 0;
 
         _items = new std::string[stack.size()];
-        for (int i = 0; !tmp.empty(); i++)
+        for (int i = 0; i < stack.size(); i++)
         {
-            this->push(tmp.top());
-            tmp.pop();
+            _items[i] = stack._items[i];
+
+            _num_items++;
+            _allocated_size++;
         }
+
+        delete[] stack._items;
+        stack._num_items = 0;
+        stack._allocated_size = 0;
+    }
+
+    ArrayStack &operator=(ArrayStack &&stack)
+    {
+        std::cout << "move!" << std::endl;
+        if (this != &stack)
+        {
+            delete[] _items;
+
+            // _num_items = stack._num_items;
+            // _allocated_size = stack._allocated_size;
+
+            _num_items = 0;
+            _allocated_size = 0;
+
+            _items = new std::string[stack.size()];
+            for (int i = 0; i < stack.size(); i++)
+            {
+                _items[i] = stack._items[i];
+
+                _num_items++;
+                _allocated_size++;
+            }
+
+            delete[] stack._items;
+            stack._num_items = 0;
+            stack._allocated_size = 0;
+        }
+
+        return *this;
     }
 
     // Destructor:
@@ -129,14 +169,14 @@ public:
     // Return the number of elements in the stack
     int size() const { return _num_items; }
 
-    // void show_items()
-    // {
-    //     for (int i = 0; i < size(); i++)
-    //     {
-    //         std::cout << i << ":" << _items[i] << std::endl;
-    //     }
-    //     std::cout << "----------" << std::endl;
-    // }
+    void show_items()
+    {
+        for (int i = 0; i < size(); i++)
+        {
+            std::cout << i << ":" << _items[i] << std::endl;
+        }
+        std::cout << "----------" << std::endl;
+    }
 };
 
 #endif // ARRAY_STACK_H
