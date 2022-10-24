@@ -138,6 +138,7 @@ public:
     ~ArrayStack()
     {
         // COMPLETE
+        // if (_num_items != 0)
         // delete[] _items;
     }
 
