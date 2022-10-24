@@ -99,7 +99,7 @@ public:
             _allocated_size++;
         }
 
-        delete[] stack._items;
+        // delete[] stack._items;
         stack._num_items = 0;
         stack._allocated_size = 0;
     }
@@ -126,7 +126,7 @@ public:
                 _allocated_size++;
             }
 
-            delete[] stack._items;
+            // delete[] stack._items;
             stack._num_items = 0;
             stack._allocated_size = 0;
         }
@@ -139,7 +139,8 @@ public:
     {
         // COMPLETE
         // if (_num_items != 0)
-        // delete[] _items;
+        // cout << "death" << endl;
+        delete[] _items;
     }
 
     // Push item to the stack
