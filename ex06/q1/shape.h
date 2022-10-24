@@ -7,17 +7,18 @@ private:
     float _area;
 
 public:
+    // default
     Shape()
     {
     }
 
     // copy
-    Shape(Shape &copy)
+    Shape(const Shape &copy)
     {
         _name = copy._name;
         _area = copy._area;
     }
-    Shape &operator=(Shape &copy)
+    Shape &operator=(const Shape &copy)
     {
         if (this != &copy)
         {
@@ -27,26 +28,26 @@ public:
         return *this;
     }
 
-    std::string set_name() const
-    {
-        return _name;
-    }
+    virtual std::string set_name() const = 0;
+    // {
+    //     return _name;
+    // }
 
-    float compute_area() const
-    {
-        return _area;
-    }
+    virtual float compute_area() const = 0;
+    // {
+    //     return _area;
+    // }
 
-    Shape *create() const
-    {
-        return new Shape();
-    }
+    virtual Shape *create() const = 0;
+    // {
+    //     return new Shape();
+    // }
 
-    Shape *clone() const
-    {
-        // return new Shape(this);
-        return this;
-    }
+    virtual Shape *clone() const = 0;
+    // {
+    //     return new Shape(this);
+    //     // return this;
+    // }
 
     ~Shape()
     {
