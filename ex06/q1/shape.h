@@ -28,7 +28,7 @@ public:
     //     return *this;
     // }
 
-    virtual std::string set_name() const = 0;
+    virtual std::string get_name() const = 0;
     // {
     //     return _name;
     // }
