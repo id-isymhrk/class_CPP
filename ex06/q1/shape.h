@@ -3,8 +3,8 @@
 class Shape
 {
 private:
-    std::string _name;
-    float _area;
+    // std::string _name;
+    // float _area;
 
 public:
     // default
@@ -13,20 +13,20 @@ public:
     }
 
     // copy
-    Shape(const Shape &copy)
-    {
-        _name = copy._name;
-        _area = copy._area;
-    }
-    Shape &operator=(const Shape &copy)
-    {
-        if (this != &copy)
-        {
-            _name = copy._name;
-            _area = copy._area;
-        }
-        return *this;
-    }
+    // Shape(const Shape &copy)
+    // {
+    //     _name = copy._name;
+    //     _area = copy._area;
+    // }
+    // Shape &operator=(const Shape &copy)
+    // {
+    //     if (this != &copy)
+    //     {
+    //         _name = copy._name;
+    //         _area = copy._area;
+    //     }
+    //     return *this;
+    // }
 
     virtual std::string set_name() const = 0;
     // {
