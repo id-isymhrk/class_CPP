@@ -49,7 +49,7 @@ public:
     //     // return this;
     // }
 
-    ~Shape()
+    virtual ~Shape()
     {
     }
 };
