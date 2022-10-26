@@ -1,5 +1,17 @@
 #include <string>
 
+struct Point
+{
+public:
+    Point(double _x, double _y)
+    {
+        x = _x;
+        y = _y;
+    }
+    double x;
+    double y;
+};
+
 class Shape
 {
 private:
