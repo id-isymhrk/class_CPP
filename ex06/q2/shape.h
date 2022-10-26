@@ -3,6 +3,9 @@
 struct Point
 {
 public:
+    Point()
+    {
+    }
     Point(double _x, double _y)
     {
         x = _x;
@@ -14,8 +17,8 @@ public:
 
 class Shape
 {
-private:
-    // std::string _name;
+protected:
+    std::string _name;
     // float _area;
 
 public:
@@ -40,10 +43,10 @@ public:
     //     return *this;
     // }
 
-    virtual std::string get_name() const = 0;
-    // {
-    //     return _name;
-    // }
+    virtual std::string get_name()
+    {
+        return _name;
+    }
 
     virtual float compute_area() const = 0;
     // {
