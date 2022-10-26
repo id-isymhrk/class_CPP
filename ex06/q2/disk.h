@@ -10,8 +10,8 @@ public:
     Disk();
     Disk(Point center, float radius);
     // copy
-    Disk(const Disk &disk);
-    Disk &operator=(const Disk &disk);
+    Disk(const Disk &copy);
+    Disk &operator=(const Disk &copy);
 
     float compute_area() const override;
 

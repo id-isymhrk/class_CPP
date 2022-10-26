@@ -1,6 +1,7 @@
 #include "disk.h"
 
 Disk::Disk()
+    : Shape()
 {
     _name = "Disk";
     _center = Point(0, 0);
@@ -8,6 +9,7 @@ Disk::Disk()
 }
 
 Disk::Disk(Point p, float r)
+    : Shape()
 {
     _name = "Disk";
     _center = p;
