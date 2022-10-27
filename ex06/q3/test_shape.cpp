@@ -1,25 +1,32 @@
-#include "rectangle.h"
-#include "disk.h"
+// #include "rectangle.h"
+// #include "disk.h"
 #include "polygon.h"
 
 // #include <vector>
 // #include <iostream>
+#include <math.h>
 
 using namespace std;
 
 int main()
 {
-    vector<Shape *> test;
+    vector<Point *> p_test = {new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0)};
+    vector<Point *> p_test2;
 
-    vector<Disk *> disks = {new Disk(), new Disk(Point(0, 0), 2)};
-    vector<Rectangle *> rects = {new Rectangle(), new Rectangle(Point(0, 0), 2, 2)};
+    for (double i = 0; i < 360; i += 360 / 64)
+    {
+        const static double R = 1.0;
+        double rad = i * 3.14 / 180;
+        p_test2.push_back(new Point(R * cos(rad), R * sin(rad)));
+    }
+
+    vector<Shape *> test;
     vector<Shape *> test2;
 
     cout << "-----input-----" << endl;
-    test.push_back(new Disk());
-    test.push_back(new Disk(Point(0, 0), 2));
-    test.push_back(new Rectangle());
-    test.push_back(new Rectangle(Point(0, 0), 2, 2));
+    test.push_back(new Polygon());
+    test.push_back(new Polygon(p_test));
+    test.push_back(new Polygon(p_test2));
     cout << "-----result-----" << endl;
     for (size_t i = 0; i < test.size(); i++)
     {
@@ -35,9 +42,7 @@ int main()
         test2[i] = test[i];
     }
 
-    test[1] = test[0]->clone();
-    // test2.push_back(test[0]->clone());
-    test[3] = test[2]->clone();
+    test[0] = test[2]->clone();
     // test2.push_back(test[2]->clone());
     cout << "-----result(test)-----" << endl;
     for (size_t i = 0; i < test.size(); i++)
