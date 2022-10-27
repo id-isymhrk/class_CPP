@@ -1,8 +1,9 @@
 #include "rectangle.h"
 #include "disk.h"
+#include "polygon.h"
 
-#include <vector>
-#include <iostream>
+// #include <vector>
+// #include <iostream>
 
 using namespace std;
 
