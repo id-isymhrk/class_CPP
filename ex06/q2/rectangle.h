@@ -7,12 +7,14 @@ private:
     float _width;
     float _height;
 
-public:
-    Rectangle();
-    Rectangle(Point left_corner, float width, float height);
+protected:
     // copy
     Rectangle(const Rectangle &copy);
     Rectangle &operator=(const Rectangle &copy);
+
+public:
+    Rectangle();
+    Rectangle(Point left_corner, float width, float height);
 
     float compute_area() const override;
 

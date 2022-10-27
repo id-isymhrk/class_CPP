@@ -49,5 +49,6 @@ Shape *Disk::clone() const
 
 Disk::~Disk()
 {
+    // std::cout << "delete" << std::endl;
     delete this;
 }

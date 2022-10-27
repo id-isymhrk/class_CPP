@@ -6,12 +6,14 @@ private:
     Point _center;
     float _radius;
 
-public:
-    Disk();
-    Disk(Point center, float radius);
+protected:
     // copy
     Disk(const Disk &copy);
     Disk &operator=(const Disk &copy);
+
+public:
+    Disk();
+    Disk(Point center, float radius);
 
     float compute_area() const override;
 

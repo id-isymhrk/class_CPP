@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class Point
 {
@@ -22,27 +23,28 @@ protected:
     std::string _name;
     // float _area;
 
+    // copy
+    Shape(const Shape &copy)
+    {
+        *this = copy;
+    }
+
+private:
+    Shape &operator=(const Shape &copy)
+    {
+        if (this != &copy)
+        {
+            *this = copy;
+        }
+        return *this;
+    }
+
 public:
     // default
     Shape()
     {
+        std::cout << "create" << std::endl;
     }
-
-    // copy
-    // Shape(const Shape &copy)
-    // {
-    //     _name = copy._name;
-    //     _area = copy._area;
-    // }
-    // Shape &operator=(const Shape &copy)
-    // {
-    //     if (this != &copy)
-    //     {
-    //         _name = copy._name;
-    //         _area = copy._area;
-    //     }
-    //     return *this;
-    // }
 
     virtual std::string get_name()
     {
