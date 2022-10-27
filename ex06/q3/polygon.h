@@ -5,10 +5,16 @@
 class Polygon : public Shape
 {
 private:
-    std::vector<Point> points;
+    std::vector<Point *> _points;
+
+protected:
+    // copy
+    Polygon(const Polygon &copy);
+    Polygon &operator=(const Polygon &copy);
 
 public:
     Polygon();
+    Polygon(std::vector<Point *> p);
 
     float compute_area() const override;
 
