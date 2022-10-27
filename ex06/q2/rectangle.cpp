@@ -18,9 +18,14 @@ Rectangle::Rectangle(Point left_corner, float width, float height)
     _height = height;
 }
 
+// copy
 Rectangle::Rectangle(const Rectangle &copy)
+    : Shape(copy)
 {
-    *this = copy;
+    // *this = copy;
+    _left_corner = copy._left_corner;
+    _width = copy._width;
+    _height = copy._height;
 }
 
 Rectangle &Rectangle::operator=(const Rectangle &copy)
@@ -28,6 +33,7 @@ Rectangle &Rectangle::operator=(const Rectangle &copy)
     if (this != &copy)
     {
 
+        // Shape::operator=(copy);
         *this = copy;
     }
 

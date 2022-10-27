@@ -26,15 +26,14 @@ protected:
     // copy
     Shape(const Shape &copy)
     {
-        *this = copy;
+        _name = copy._name;
     }
 
-private:
     Shape &operator=(const Shape &copy)
     {
         if (this != &copy)
         {
-            *this = copy;
+            _name = copy._name;
         }
         return *this;
     }

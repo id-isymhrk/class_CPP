@@ -26,6 +26,7 @@ int main()
         cout << "Name:" << test[i]->get_name() << endl;
         cout << "Area:" << test[i]->compute_area() << endl;
     }
+    cout << endl;
     cout << "-----copied-----" << endl;
     test2.resize(test.size());
     for (size_t i = 0; i < test.size(); i++)
@@ -33,21 +34,18 @@ int main()
         test2[i] = test[i];
     }
 
-    // test2.resize(disks.size() + rects.size());
-    // for (size_t i = 0; i < disks.size(); i++)
-    // {
-    //     test2[i] = disks[i];
-    // }
-    // for (size_t i = 0; i < rects.size(); i++)
-    // {
-    //     test2[i + disks.size()] = rects[i];
-    // }
-
-    // test[1] = test[0]->clone();
+    test[1] = test[0]->clone();
     // test2.push_back(test[0]->clone());
-    // test[3] = test[2]->clone();
+    test[3] = test[2]->clone();
     // test2.push_back(test[2]->clone());
-    cout << "-----result-----" << endl;
+    cout << "-----result(test)-----" << endl;
+    for (size_t i = 0; i < test.size(); i++)
+    {
+        cout << i << endl;
+        cout << "Name:" << test[i]->get_name() << endl;
+        cout << "Area:" << test[i]->compute_area() << endl;
+    }
+    cout << "-----result(test2)-----" << endl;
     for (size_t i = 0; i < test2.size(); i++)
     {
         cout << i << endl;

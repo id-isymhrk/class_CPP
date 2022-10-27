@@ -16,17 +16,23 @@ Disk::Disk(Point p, float r)
     _radius = r;
 }
 
+// copy
 Disk::Disk(const Disk &copy)
+    : Shape(copy)
 {
-    *this = copy;
+    // *this = copy;
+    _center = copy._center;
+    _radius = copy._radius;
 }
 
 Disk &Disk::operator=(const Disk &copy)
 {
     if (this != &copy)
     {
-
-        *this = copy;
+        // Shape::operator=(copy);
+        // *this = copy;
+        _center = copy._center;
+        _radius = copy._radius;
     }
 
     return *this;
