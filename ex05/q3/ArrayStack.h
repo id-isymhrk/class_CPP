@@ -86,7 +86,7 @@ public:
     ArrayStack(ArrayStack &&stack)
     {
         std::cout << "move!" << std::endl;
-        delete[] _items;
+        // delete[] _items;
         _num_items = 0;
         _allocated_size = 0;
 
@@ -109,8 +109,7 @@ public:
         std::cout << "move!" << std::endl;
         if (this != &stack)
         {
-            delete[] _items;
-
+            // delete[] _items;
             // _num_items = stack._num_items;
             // _allocated_size = stack._allocated_size;
 
