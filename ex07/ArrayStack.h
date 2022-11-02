@@ -57,6 +57,7 @@ public:
     // copy
     ArrayStack(const ArrayStack &stack)
     {
+        std::cout << "copy!" << std::endl;
         _num_items = stack._num_items;
         _allocated_size = stack._allocated_size;
         _items = new std::string[stack.size()];
@@ -68,6 +69,7 @@ public:
 
     ArrayStack &operator=(ArrayStack &stack)
     {
+        std::cout << "copy!" << std::endl;
         if (this != &stack)
         {
             delete[] _items;
@@ -86,7 +88,7 @@ public:
     ArrayStack(ArrayStack &&stack)
     {
         std::cout << "move!" << std::endl;
-        delete[] _items;
+        // delete[] _items;
         _num_items = 0;
         _allocated_size = 0;
 
@@ -109,8 +111,7 @@ public:
         std::cout << "move!" << std::endl;
         if (this != &stack)
         {
-            delete[] _items;
-
+            // delete[] _items;
             // _num_items = stack._num_items;
             // _allocated_size = stack._allocated_size;
 
@@ -146,23 +147,47 @@ public:
     // Push item to the stack
     void push(const std::string &item)
     {
-        if (_num_items == _allocated_size)
-            resize(2 * _allocated_size);
-        _items[_num_items++] = item;
+        try
+        {
+            if (_num_items == _allocated_size)
+                resize(2 * _allocated_size);
+            _items[_num_items++] = item;
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "Stack is full. Don't push!" << e.what() << std::endl;
+        }
     }
 
     // Pop an item
     void pop()
     {
-        _num_items--;
-        if (_num_items > 0 && _num_items == _allocated_size / 4)
-            resize(_allocated_size / 2);
+        try
+        {
+            _num_items--;
+            if (_num_items > 0 && _num_items == _allocated_size / 4)
+                resize(_allocated_size / 2);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "Stack is empty. Don't pop!" << e.what() << std::endl;
+        }
     }
 
     // Access the top-most item
     std::string top()
     {
-        return _items[_num_items - 1];
+        std::string ans;
+        try
+        {
+            ans = _items[_num_items - 1];
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "Stack is empty. Don't look stack!" << e.what() << std::endl;
+        }
+
+        return ans;
     }
 
     // Check if the stack is empty
