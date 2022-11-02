@@ -6,6 +6,22 @@
 #ifndef ARRAY_STACK_H
 #define ARRAY_STACK_H
 
+using namespace std;
+
+class EmptyError
+{
+public:
+    EmptyError(bool empty){
+
+    };
+};
+
+void throwEmptyError(bool empty)
+{
+    if (empty)
+        throw EmptyError(empty);
+}
+
 class ArrayStack
 {
 private:
@@ -147,47 +163,27 @@ public:
     // Push item to the stack
     void push(const std::string &item)
     {
-        try
-        {
-            if (_num_items == _allocated_size)
-                resize(2 * _allocated_size);
-            _items[_num_items++] = item;
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << "Stack is full. Don't push!" << e.what() << std::endl;
-        }
+        if (_num_items == _allocated_size)
+            resize(2 * _allocated_size);
+        _items[_num_items++] = item;
     }
 
     // Pop an item
     void pop()
     {
-        try
-        {
-            _num_items--;
-            if (_num_items > 0 && _num_items == _allocated_size / 4)
-                resize(_allocated_size / 2);
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << "Stack is empty. Don't pop!" << e.what() << std::endl;
-        }
+        cout << "pop()!" << endl;
+        throwEmptyError(this->empty());
+
+        _num_items--;
+        if (_num_items > 0 && _num_items == _allocated_size / 4)
+            resize(_allocated_size / 2);
     }
 
     // Access the top-most item
     std::string top()
     {
-        std::string ans;
-        try
-        {
-            ans = _items[_num_items - 1];
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << "Stack is empty. Don't look stack!" << e.what() << std::endl;
-        }
-
-        return ans;
+        throwEmptyError(this->empty());
+        return _items[_num_items - 1];
     }
 
     // Check if the stack is empty
