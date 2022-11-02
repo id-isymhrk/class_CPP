@@ -8,9 +8,9 @@ private:
 
 public:
     // default
-    Shape()
-    {
-    }
+    // Shape()
+    // {
+    // }
 
     // copy
     // Shape(const Shape &copy)
