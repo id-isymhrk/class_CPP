@@ -5,7 +5,7 @@ using namespace std;
 class Mat2x2
 {
 protected:
-    const size_t MATRIX_SIZE = 2;
+    const size_t SIZE_COLIMN = 2;
 
     float **_value;
 
