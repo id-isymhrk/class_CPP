@@ -1,6 +1,7 @@
 // ArrayStack.h
 
 #include <string>
+#include <exception>
 #include <iostream>
 
 #ifndef ARRAY_STACK_H
@@ -8,7 +9,7 @@
 
 using namespace std;
 
-class EmptyError
+class EmptyError : public std::exception
 {
 public:
     EmptyError(bool empty){
