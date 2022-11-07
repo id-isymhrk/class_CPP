@@ -102,26 +102,23 @@ public:
 
     // move
     ArrayStack(ArrayStack &&stack)
-        : _items(std::move(stack._items)), _num_items(std::move(stack._num_items)), _allocated_size(std::move(stack._allocated_size))
+    // : _items(std::move(stack._items)), _num_items(std::move(stack._num_items)), _allocated_size(std::move(stack._allocated_size))
     {
         std::cout << "move!" << std::endl;
         // delete[] _items;
-        _num_items = 0;
-        _allocated_size = 0;
+        // _num_items = 0;
+        // _allocated_size = 0;
+        // _items = new std::string[stack.size()];
 
-        _items = new std::string[stack.size()];
-        // for (int i = 0; i < stack.size(); i++)
-        // {
-        //     _items[i] = stack._items[i];
-
-        //     _num_items++;
-        //     _allocated_size++;
-        // }
         // _items = std::move(stack._items);
         // _num_items = std::move(stack._num_items);
         // _allocated_size = std::move(stack._allocated_size);
 
-        delete[] stack._items;
+        _items = stack._items;
+        _num_items = stack._num_items;
+        _allocated_size = stack._allocated_size;
+
+        stack._items = nullptr;
         stack._num_items = 0;
         stack._allocated_size = 0;
     }
@@ -133,25 +130,19 @@ public:
         {
             delete[] _items;
 
-            // _num_items = stack._num_items;
-            // _allocated_size = stack._allocated_size;
+            // _num_items = 0;
+            // _allocated_size = 0;
+            // _items = new std::string[stack.size()];
 
-            _num_items = 0;
-            _allocated_size = 0;
+            // _items = std::move(stack._items);
+            // _num_items = std::move(stack._num_items);
+            // _allocated_size = std::move(stack._allocated_size);
 
-            _items = new std::string[stack.size()];
-            // for (int i = 0; i < stack.size(); i++)
-            // {
-            //     _items[i] = stack._items[i];
+            _items = stack._items;
+            _num_items = stack._num_items;
+            _allocated_size = stack._allocated_size;
 
-            //     _num_items++;
-            //     _allocated_size++;
-            // }
-
-            _items = std::move(stack._items);
-            _num_items = std::move(stack._num_items);
-            _allocated_size = std::move(stack._allocated_size);
-            delete[] stack._items;
+            stack._items = nullptr;
             stack._num_items = 0;
             stack._allocated_size = 0;
         }
@@ -163,9 +154,11 @@ public:
     ~ArrayStack()
     {
         // COMPLETE
-        // if (_num_items != 0)
-        // cout << "death" << endl;
-        // delete[] _items;
+        if (_items != nullptr)
+        {
+            cout << "death" << endl;
+            delete[] _items;
+        }
     }
 
     // Push item to the stack
