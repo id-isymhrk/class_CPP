@@ -4,7 +4,7 @@ int main()
 {
     Mat2x2 origin = Mat2x2();
     // float *test_array = new float[4];
-    float array[] = {1.0, 1.0, 1.0, 1.0};
+    float array[] = {1.0, 0.0, 0.0, 1.0};
     Mat2x2 test_mat = Mat2x2(array);
 
     cout << "origin" << endl;

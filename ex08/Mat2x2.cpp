@@ -34,11 +34,31 @@ Mat2x2::Mat2x2(float *array)
 // copy
 Mat2x2::Mat2x2(const Mat2x2 &mat)
 {
-    this->_value = mat._value;
+    _value = new float *[SIZE_COLIMN];
+    for (size_t i = 0; i < SIZE_COLIMN; i++)
+    {
+
+        _value[i] = new float[SIZE_COLIMN];
+        for (size_t j = 0; j < SIZE_COLIMN; j++)
+        {
+            _value[i][j] = mat._value[i][j];
+        }
+    }
 }
 Mat2x2 &Mat2x2::operator=(const Mat2x2 &mat)
 {
-    this->_value = mat._value;
+    delete[] this->_value;
+
+    this->_value = new float *[SIZE_COLIMN];
+    for (size_t i = 0; i < SIZE_COLIMN; i++)
+    {
+
+        this->_value[i] = new float[SIZE_COLIMN];
+        for (size_t j = 0; j < SIZE_COLIMN; j++)
+        {
+            this->_value[i][j] = mat._value[i][j];
+        }
+    }
 
     return *this;
 }
