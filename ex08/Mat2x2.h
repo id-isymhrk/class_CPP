@@ -13,9 +13,9 @@ public:
     Mat2x2();
     Mat2x2(float *array);
 
-    Mat2x2 &operator+(const Mat2x2 &mat);
-    Mat2x2 &operator-(const Mat2x2 &mat);
-    Mat2x2 &operator*(const Mat2x2 &mat);
+    Mat2x2 operator+(const Mat2x2 &mat);
+    Mat2x2 operator-(const Mat2x2 &mat);
+    Mat2x2 operator*(const Mat2x2 &mat);
     Mat2x2 &operator+=(const Mat2x2 &mat);
     Mat2x2 &operator-=(const Mat2x2 &mat);
     Mat2x2 &operator*=(const Mat2x2 &mat);

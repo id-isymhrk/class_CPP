@@ -5,7 +5,7 @@ Mat2x2::Mat2x2()
     _value = new float *[SIZE_COLIMN];
     for (size_t i = 0; i < SIZE_COLIMN; i++)
     {
-        *_value = new float[SIZE_COLIMN];
+        _value[i] = new float[SIZE_COLIMN];
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
             _value[i][j] = 1;
@@ -21,7 +21,7 @@ Mat2x2::Mat2x2(float *array)
     for (size_t i = 0; i < SIZE_COLIMN; i++)
     {
 
-        *_value = new float[SIZE_COLIMN];
+        _value[i] = new float[SIZE_COLIMN];
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
             _value[i][j] = array[index];
@@ -31,7 +31,7 @@ Mat2x2::Mat2x2(float *array)
     }
 }
 
-Mat2x2 &Mat2x2::operator+(const Mat2x2 &mat)
+Mat2x2 Mat2x2::operator+(const Mat2x2 &mat)
 {
     float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
     int index = 0;
@@ -47,7 +47,7 @@ Mat2x2 &Mat2x2::operator+(const Mat2x2 &mat)
 
     return Mat2x2(ref_array);
 }
-Mat2x2 &Mat2x2::operator-(const Mat2x2 &mat)
+Mat2x2 Mat2x2::operator-(const Mat2x2 &mat)
 {
     float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
     int index = 0;
@@ -61,7 +61,7 @@ Mat2x2 &Mat2x2::operator-(const Mat2x2 &mat)
     }
     return Mat2x2(ref_array);
 }
-Mat2x2 &Mat2x2::operator*(const Mat2x2 &mat)
+Mat2x2 Mat2x2::operator*(const Mat2x2 &mat)
 {
     float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
     float tmp = 0;
@@ -141,8 +141,12 @@ ostream &operator<<(ostream &os, const Mat2x2 &mat)
     {
         for (size_t j = 0; j < mat.SIZE_COLIMN; j++)
         {
+            os << " " << mat._value[i][j];
         }
+        os << endl;
     }
+
+    return os;
 }
 
 Mat2x2::~Mat2x2()
