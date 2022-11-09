@@ -31,6 +31,18 @@ Mat2x2::Mat2x2(float *array)
     }
 }
 
+// copy
+Mat2x2::Mat2x2(const Mat2x2 &mat)
+{
+    this->_value = mat._value;
+}
+Mat2x2 &Mat2x2::operator=(const Mat2x2 &mat)
+{
+    this->_value = mat._value;
+
+    return *this;
+}
+
 Mat2x2 Mat2x2::operator+(const Mat2x2 &mat)
 {
     float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
@@ -64,8 +76,6 @@ Mat2x2 Mat2x2::operator-(const Mat2x2 &mat)
 Mat2x2 Mat2x2::operator*(const Mat2x2 &mat)
 {
     float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
-    float tmp = 0;
-    int index = 0;
     for (size_t i = 0; i < SIZE_COLIMN * SIZE_COLIMN; i++)
     {
         ref_array[i] = 0;
@@ -74,21 +84,6 @@ Mat2x2 Mat2x2::operator*(const Mat2x2 &mat)
         {
             ref_array[i] += this->_value[i / SIZE_COLIMN][j] * mat._value[j][i / SIZE_COLIMN];
         }
-
-        // if (i < SIZE_COLIMN)
-        // {
-        //     for (size_t j = 0; j < SIZE_COLIMN; j++)
-        //     {
-        //         ref_array[i] += this->_value[0][j] * mat._value[j][0];
-        //     }
-        // }
-        // else
-        // {
-        //     for (size_t j = 0; j < SIZE_COLIMN; j++)
-        //     {
-        //         ref_array[i] += this->_value[1][j] * mat._value[j][1];
-        //     }
-        // }
     }
 
     return Mat2x2(ref_array);
@@ -99,8 +94,11 @@ Mat2x2 &Mat2x2::operator+=(const Mat2x2 &mat)
     {
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
+            this->_value[i][j] += mat._value[i][j];
         }
     }
+
+    return *this;
 }
 Mat2x2 &Mat2x2::operator-=(const Mat2x2 &mat)
 {
@@ -108,31 +106,57 @@ Mat2x2 &Mat2x2::operator-=(const Mat2x2 &mat)
     {
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
+            this->_value[i][j] -= mat._value[i][j];
         }
     }
+
+    return *this;
 }
 Mat2x2 &Mat2x2::operator*=(const Mat2x2 &mat)
 {
+    float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
+    for (size_t i = 0; i < SIZE_COLIMN * SIZE_COLIMN; i++)
+    {
+        ref_array[i] = 0;
+
+        for (size_t j = 0; j < SIZE_COLIMN; j++)
+        {
+            ref_array[i] += this->_value[i / SIZE_COLIMN][j] * mat._value[j][i / SIZE_COLIMN];
+        }
+    }
+
+    *this = Mat2x2(ref_array);
+
+    return *this;
+}
+
+float Mat2x2::operator()(const int &i, const int &j)
+{
+    return _value[i][j];
+}
+
+bool Mat2x2::operator==(const Mat2x2 &mat)
+{
+    bool flag_equal = true;
+
     for (size_t i = 0; i < SIZE_COLIMN; i++)
     {
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
+            if (this->_value[i][j] != mat._value[i][j])
+            {
+                flag_equal = false;
+                break;
+            }
         }
-    }
-}
 
-float &Mat2x2::operator()(const int &i, const int &j)
-{
-}
-
-bool &Mat2x2::operator==(const Mat2x2 &mat)
-{
-    for (size_t i = 0; i < SIZE_COLIMN; i++)
-    {
-        for (size_t j = 0; j < SIZE_COLIMN; j++)
+        if (!flag_equal)
         {
+            break;
         }
     }
+
+    return flag_equal;
 }
 
 ostream &operator<<(ostream &os, const Mat2x2 &mat)
@@ -151,4 +175,5 @@ ostream &operator<<(ostream &os, const Mat2x2 &mat)
 
 Mat2x2::~Mat2x2()
 {
+    delete[] _value;
 }

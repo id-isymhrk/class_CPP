@@ -10,8 +10,12 @@ protected:
     float **_value;
 
 public:
+    // constructor
     Mat2x2();
     Mat2x2(float *array);
+    // copy
+    Mat2x2(const Mat2x2 &mat);
+    Mat2x2 &operator=(const Mat2x2 &mat);
 
     Mat2x2 operator+(const Mat2x2 &mat);
     Mat2x2 operator-(const Mat2x2 &mat);
@@ -20,9 +24,9 @@ public:
     Mat2x2 &operator-=(const Mat2x2 &mat);
     Mat2x2 &operator*=(const Mat2x2 &mat);
 
-    float &operator()(const int &i, const int &j);
+    float operator()(const int &i, const int &j);
 
-    bool &operator==(const Mat2x2 &mat);
+    bool operator==(const Mat2x2 &mat);
 
     friend ostream &operator<<(ostream &os, const Mat2x2 &mat);
 
