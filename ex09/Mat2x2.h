@@ -173,13 +173,16 @@ public:
 
     bool operator==(const Mat2x2<T, N> &mat)
     {
+        const static double judge = 1.0e-20;
+        T tmp;
         bool flag_equal = true;
 
         for (size_t i = 0; i < SIZE_COLIMN; i++)
         {
             for (size_t j = 0; j < SIZE_COLIMN; j++)
             {
-                if (this->_value[i][j] != mat._value[i][j])
+                tmp = this->_value[i][j] - mat._value[i][j];
+                if (tmp < -judge || judge < tmp)
                 {
                     flag_equal = false;
                     break;
