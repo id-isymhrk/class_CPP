@@ -2,6 +2,11 @@
 
 using namespace std;
 
+// template <class T, int N>
+// class MAt2x2;
+// template <class T, int N>
+// ostream &operator<<(ostream &os, const Mat2x2<T, N> &mat);
+
 template <class T, int N>
 class Mat2x2
 {
@@ -43,7 +48,7 @@ public:
     };
 
     // copy
-    Mat2x2(const Mat2x2 &mat)
+    Mat2x2(const Mat2x2<T, N> &mat)
     {
         _value = new T *[SIZE_COLIMN];
         for (size_t i = 0; i < SIZE_COLIMN; i++)
@@ -56,7 +61,7 @@ public:
             }
         }
     };
-    Mat2x2 &operator=(const Mat2x2 &mat)
+    Mat2x2<T, N> &operator=(const Mat2x2<T, N> &mat)
     {
         delete[] this->_value;
 
@@ -74,9 +79,9 @@ public:
         return *this;
     };
 
-    Mat2x2 operator+(const Mat2x2 &mat)
+    Mat2x2<T, N> operator+(const Mat2x2<T, N> &mat)
     {
-        float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
+        T *ref_array = new T[SIZE_COLIMN * SIZE_COLIMN];
         int index = 0;
 
         for (size_t i = 0; i < SIZE_COLIMN; i++)
@@ -88,11 +93,11 @@ public:
             }
         }
 
-        return Mat2x2(ref_array);
+        return Mat2x2<T, N>(ref_array);
     };
-    Mat2x2 operator-(const Mat2x2 &mat)
+    Mat2x2<T, N> operator-(const Mat2x2<T, N> &mat)
     {
-        float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
+        T *ref_array = new T[SIZE_COLIMN * SIZE_COLIMN];
         int index = 0;
         for (size_t i = 0; i < SIZE_COLIMN; i++)
         {
@@ -102,11 +107,11 @@ public:
                 index++;
             }
         }
-        return Mat2x2(ref_array);
+        return Mat2x2<T, N>(ref_array);
     };
-    Mat2x2 operator*(const Mat2x2 &mat)
+    Mat2x2<T, N> operator*(const Mat2x2<T, N> &mat)
     {
-        float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
+        T *ref_array = new T[SIZE_COLIMN * SIZE_COLIMN];
         for (size_t i = 0; i < SIZE_COLIMN * SIZE_COLIMN; i++)
         {
             ref_array[i] = 0;
@@ -117,9 +122,9 @@ public:
             }
         }
 
-        return Mat2x2(ref_array);
+        return Mat2x2<T, N>(ref_array);
     };
-    Mat2x2 &operator+=(const Mat2x2 &mat)
+    Mat2x2<T, N> &operator+=(const Mat2x2<T, N> &mat)
     {
         for (size_t i = 0; i < SIZE_COLIMN; i++)
         {
@@ -131,7 +136,7 @@ public:
 
         return *this;
     };
-    Mat2x2 &operator-=(const Mat2x2 &mat)
+    Mat2x2<T, N> &operator-=(const Mat2x2<T, N> &mat)
     {
         for (size_t i = 0; i < SIZE_COLIMN; i++)
         {
@@ -143,9 +148,9 @@ public:
 
         return *this;
     };
-    Mat2x2 &operator*=(const Mat2x2 &mat)
+    Mat2x2<T, N> &operator*=(const Mat2x2<T, N> &mat)
     {
-        float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
+        T *ref_array = new T[SIZE_COLIMN * SIZE_COLIMN];
         for (size_t i = 0; i < SIZE_COLIMN * SIZE_COLIMN; i++)
         {
             ref_array[i] = 0;
@@ -156,17 +161,17 @@ public:
             }
         }
 
-        *this = Mat2x2(ref_array);
+        *this = Mat2x2<T, N>(ref_array);
 
         return *this;
     };
 
-    T operator()(const int &i, const int &j)
+    T operator()(const size_t &i, const size_t &j) const
     {
         return _value[i][j];
     };
 
-    bool operator==(const Mat2x2 &mat)
+    bool operator==(const Mat2x2<T, N> &mat)
     {
         bool flag_equal = true;
 
@@ -190,23 +195,28 @@ public:
         return flag_equal;
     };
 
-    template <class U, int M>
-    friend ostream &operator<<(ostream &os, const Mat2x2<U, M> &mat)
-    {
-        for (size_t i = 0; i < mat.SIZE_COLIMN; i++)
-        {
-            for (size_t j = 0; j < mat.SIZE_COLIMN; j++)
-            {
-                os << " " << mat._value[i][j];
-            }
-            os << endl;
-        }
-
-        return os;
-    };
-
     ~Mat2x2()
     {
         delete[] _value;
     };
+};
+
+template class Mat2x2<int, 2>;
+template class Mat2x2<float, 2>;
+template class Mat2x2<int, 3>;
+template class Mat2x2<float, 3>;
+
+template <class U, int M>
+ostream &operator<<(ostream &os, const Mat2x2<U, M> &mat)
+{
+    for (size_t i = 0; i < M; i++)
+    {
+        for (size_t j = 0; j < M; j++)
+        {
+            os << " " << mat(i, j);
+        }
+        os << endl;
+    }
+
+    return os;
 };

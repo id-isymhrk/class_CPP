@@ -44,9 +44,19 @@ int main()
     }
     cout << endl;
 
-    cout << "origin*=origin" << endl;
-    origin *= origin;
-    cout << origin << endl;
+    int test_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int test2_array[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+    Mat2x2<int, 3> test = Mat2x2<int, 3>(test_array);
+    Mat2x2<int, 3> test2 = Mat2x2<int, 3>(test2_array);
+
+    cout << "test" << endl;
+    cout << test << endl;
+    cout << "test2" << endl;
+    cout << test2 << endl;
+    cout << "test + test2" << endl;
+    cout << test + test2 << endl;
+    cout << "test - test2" << endl;
+    cout << test - test2 << endl;
 
     return 0;
 }
