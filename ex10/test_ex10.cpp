@@ -11,8 +11,9 @@ int main()
         string test = "( 1 + ( 2 * 3 ) )";
         cout << "This is Test!" << endl;
         cout << "input:" << test << endl;
-
-        evaluate(test);
+        cout << endl;
+        cout << "answer" << endl;
+        cout << evaluate(test) << endl;
     }
     else
     {
@@ -20,7 +21,8 @@ int main()
         cout << "---input yourself---" << endl;
         cin >> test;
 
-        evaluate(test);
+        cout << "answer" << endl;
+        cout << evaluate(test) << endl;
     }
     return 0;
 }

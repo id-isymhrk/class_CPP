@@ -5,26 +5,26 @@
 
 using namespace std;
 
-double Add(double n1, double n2)
+void Add(double &n1, double n2)
 {
-    return n1 + n2;
+    n1 += n2;
 }
-double Sub(double n1, double n2)
+void Sub(double &n1, double n2)
 {
-    return n1 - n2;
+    n1 -= n2;
 }
-double Mult(double n1, double n2)
+void Mult(double &n1, double n2)
 {
-    return n1 * n2;
+    n1 *= n2;
 }
-double Div(double n1, double n2)
+void Div(double &n1, double n2)
 {
-    return n1 / n2;
+    n1 /= n2;
 }
 
-typedef map<string, double (*)(double, double)> Calc;
-
+typedef map<string, void (*)(double &, double)> Calc;
 Calc calc;
+
 void Init()
 {
     calc.insert(make_pair("+", Add));
@@ -35,7 +35,8 @@ void Init()
 
 double evaluate(const string &str)
 {
-    double res;
+    bool first = true;
+    double res = 0.0;
 
     double num;
     stack<double> operands;
@@ -49,36 +50,70 @@ double evaluate(const string &str)
     {
         // cout << "in evaluate while" << endl;
         // cout << tmp << endl;
-        if ((tmp != "(") && (tmp != ")"))
+        if (tmp != "(")
         {
-            stringstream ss_tmp{tmp};
-            if ((tmp == "+") || (tmp == "-") || (tmp == "*") || (tmp == "/"))
+            if (tmp == ")")
             {
-                ss_tmp >> ope;
-                // ope = tmp;
-                operations.push(ope);
+                if (first)
+                {
+                    static double n1;
+                    static double n2;
+                    static string ope;
+                    n1 = operands.top();
+                    operands.pop();
+                    n2 = operands.top();
+                    operands.pop();
+                    ope = operations.top();
+                    operations.pop();
+                    Calc::iterator it = calc.find(ope);
+                    it->second(n1, n2);
+                    res = n1;
+
+                    first = false;
+                }
+                else
+                {
+                    static double n1;
+                    static string ope;
+                    n1 = operands.top();
+                    operands.pop();
+                    ope = operations.top();
+                    operations.pop();
+                    Calc::iterator it = calc.find(ope);
+                    it->second(res, n1);
+                }
             }
             else
             {
-                ss_tmp >> num;
-                operands.push(num);
+                stringstream ss_tmp{tmp};
+                if ((tmp == "+") || (tmp == "-") || (tmp == "*") || (tmp == "/"))
+                {
+                    ss_tmp >> ope;
+                    // ope = tmp;
+                    operations.push(ope);
+                }
+                else
+                {
+                    ss_tmp >> num;
+                    operands.push(num);
+                }
             }
         }
     }
 
-    cout << "---operands---" << endl;
-    while (!operands.empty())
-    {
-        cout << operands.top() << endl;
-        operands.pop();
-    }
-    cout << endl;
-    cout << "---operations---" << endl;
-    while (!operations.empty())
-    {
-        cout << operations.top() << endl;
-        operations.pop();
-    }
+    // cout << "---operands---" << endl;
+    // while (!operands.empty())
+    // {
+    //     cout << operands.top() << endl;
+    //     operands.pop();
+    // }
+    // cout << endl;
+    // cout << "---operations---" << endl;
+    // while (!operations.empty())
+    // {
+    //     cout << operations.top() << endl;
+    //     operations.pop();
+    // }
 
     return res;
 }
