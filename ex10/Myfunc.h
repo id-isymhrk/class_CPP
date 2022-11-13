@@ -27,6 +27,7 @@ Calc calc;
 
 void Init()
 {
+    // recognize funcs
     calc.insert(make_pair("+", Add));
     calc.insert(make_pair("-", Sub));
     calc.insert(make_pair("*", Mult));
@@ -36,7 +37,7 @@ void Init()
 double evaluate(const string &str)
 {
     bool first = true;
-    double res = 0.0;
+    double res;
 
     double num;
     stack<double> operands;
@@ -54,34 +55,23 @@ double evaluate(const string &str)
         {
             if (tmp == ")")
             {
-                if (first) //計算初回
-                {
-                    static double n1;
-                    static double n2;
-                    static string ope;
-                    n1 = operands.top();
-                    operands.pop();
-                    n2 = operands.top();
-                    operands.pop();
-                    ope = operations.top();
-                    operations.pop();
-                    Calc::iterator it = calc.find(ope);
-                    it->second(n1, n2);
-                    res = n1;
+                static double n1;
+                static double n2;
+                static string ope;
+                n1 = operands.top();
+                operands.pop();
+                n2 = operands.top();
+                operands.pop();
+                ope = operations.top();
+                operations.pop();
 
-                    first = false;
-                }
-                else //２回目以降は以前の計算結果を使う
-                {
-                    static double n1;
-                    static string ope;
-                    n1 = operands.top();
-                    operands.pop();
-                    ope = operations.top();
-                    operations.pop();
-                    Calc::iterator it = calc.find(ope);
-                    it->second(res, n1);
-                }
+                // cout << n2 << " " << ope << " " << n1 << endl;
+
+                // calc
+                calc.find(ope)->second(n2, n1);
+                operands.push(n2);
+
+                // cout << "temp answer:" << operands.top() << endl;
             }
             else
             {
@@ -114,6 +104,6 @@ double evaluate(const string &str)
     //     cout << operations.top() << endl;
     //     operations.pop();
     // }
-
+    res = operands.top();
     return res;
 }
