@@ -54,7 +54,7 @@ double evaluate(const string &str)
         {
             if (tmp == ")")
             {
-                if (first)
+                if (first) //計算初回
                 {
                     static double n1;
                     static double n2;
@@ -71,7 +71,7 @@ double evaluate(const string &str)
 
                     first = false;
                 }
-                else
+                else //２回目以降は以前の計算結果を使う
                 {
                     static double n1;
                     static string ope;

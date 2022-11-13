@@ -1,4 +1,5 @@
 #include "Myfunc.h"
+#include <vector>
 
 constexpr bool FLAG_TEST = true;
 
@@ -8,12 +9,19 @@ int main()
 
     if (FLAG_TEST)
     {
-        string test = "( 1 + ( 2 * 3 ) )";
-        cout << "This is Test!" << endl;
-        cout << "input:" << test << endl;
-        cout << endl;
-        cout << "answer" << endl;
-        cout << evaluate(test) << endl;
+        vector<string> test = {
+            "( 1 + ( 2 * 3 ) )",
+            "( ( 1 * 2 ) / 2 )",
+            "( ( 1 + 1) * ( 1 + 1 ) )",
+        };
+        for (size_t i = 0; i < test.size(); i++)
+        {
+            cout << "This is Test!" << endl;
+            cout << "No." << i << "   input:" << test[i] << endl;
+            cout << "answer" << endl;
+            cout << evaluate(test[i]) << endl;
+            cout << endl;
+        }
     }
     else
     {
@@ -21,6 +29,7 @@ int main()
         cout << "---input yourself---" << endl;
         cin >> test;
 
+        cout << endl;
         cout << "answer" << endl;
         cout << evaluate(test) << endl;
     }
