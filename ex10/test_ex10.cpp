@@ -4,19 +4,19 @@ constexpr bool FLAG_TEST = true;
 
 int main()
 {
-    if (!FLAG_TEST)
+    if (FLAG_TEST)
     {
-        string test;
-        cout << "---input yourself---" << endl;
-        cin >> test;
+        string test = "( 1 + ( 2 * 3 ) )";
+        cout << "This is Test!" << endl;
+        cout << "input:" << test << endl;
 
         evaluate(test);
     }
     else
     {
-        string test = "( 1 + 2 )";
-        cout << "This is Test!" << endl;
-        cout << "input:" << test << endl;
+        string test;
+        cout << "---input yourself---" << endl;
+        cin >> test;
 
         evaluate(test);
     }
