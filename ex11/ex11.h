@@ -11,11 +11,21 @@ namespace PL4
     {
         for (BiDirIt it = begin + 1; it != end; it++)
         {
-            for (BiDirIt it2 = begin; it2 != it; it2++)
+            for (BiDirIt sorted = begin; sorted != it; sorted++)
             {
-                if (*it < *it2)
+                if (*it < *sorted)
                 {
-                    iter_swap(it, it2);
+                    // cout << "check:" << *it << endl;
+                    for (BiDirIt s = it; s != sorted; s--)
+                    {
+                        iter_swap(s, s - 1);
+                    }
+
+                    // for (BiDirIt a = begin; a != end; a++)
+                    // {
+                    //     cout << " " << *a;
+                    // }
+                    // cout << endl;
                 }
             }
         }

@@ -9,6 +9,7 @@ int main()
         vector<vector<int>> test_int{
             {0, 9, 8, 7, 6, 5, 4, 3, 2, 1},
             {12, 3, 15, 0, 96, 33, 123, 52},
+            {600, 422, 272, 953, 877, 72, 839, 56, 61, 123, 222, 600},
         };
         vector<vector<double>> test_double{
             {0.1, 0.3, 0.5, 0.7, 0.9, 1.1, -4, 3.6},
@@ -63,9 +64,9 @@ int main()
         cout << "---input array length---" << endl;
         cin >> n;
         cout << endl;
+        cout << "---input Number yourself---" << endl;
         for (int i = 0; i < n; i++)
         {
-            cout << "---input Number yourself---" << endl;
             cin >> tmp;
             array.push_back(tmp);
         }
