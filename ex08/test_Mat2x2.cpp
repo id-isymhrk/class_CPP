@@ -4,7 +4,7 @@ int main()
 {
     Mat2x2 origin = Mat2x2();
     // float *test_array = new float[4];
-    float array[] = {1.0, 0.0, 0.0, 1.0};
+    float array[] = {1.0, 2.0, 3.0, 4.0};
     Mat2x2 test_mat = Mat2x2(array);
 
     cout << "origin" << endl;
@@ -44,9 +44,11 @@ int main()
     }
     cout << endl;
 
-    cout << "origin*=origin" << endl;
-    origin *= origin;
-    cout << origin << endl;
+    cout << "-test_mat" << endl;
+    cout << -test_mat << endl;
+
+    cout << "test_mat*-test_mat" << endl;
+    cout << test_mat * (-test_mat) << endl;
 
     return 0;
 }
