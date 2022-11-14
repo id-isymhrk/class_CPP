@@ -8,7 +8,14 @@ Mat2x2::Mat2x2()
         _value[i] = new float[SIZE_COLIMN];
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
-            _value[i][j] = 1;
+            if (i == j)
+            {
+                _value[i][j] = 1;
+            }
+            else
+            {
+                _value[i][j] = 0;
+            }
         }
     }
 }
@@ -20,11 +27,14 @@ Mat2x2::Mat2x2(float *array)
     _value = new float *[SIZE_COLIMN];
     for (size_t i = 0; i < SIZE_COLIMN; i++)
     {
-
         _value[i] = new float[SIZE_COLIMN];
+    }
+
+    for (size_t i = 0; i < SIZE_COLIMN; i++)
+    {
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
-            _value[i][j] = array[index];
+            _value[j][i] = array[index];
 
             index++;
         }
