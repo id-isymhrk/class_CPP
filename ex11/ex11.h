@@ -15,7 +15,14 @@ namespace PL4
             {
                 if (*it < *it2)
                 {
-                    iter_swap(it, it2);
+                    // cout << "check:" << *it << endl;
+                    iter_swap(it, it2); //ここでforが巻き戻る
+
+                    // for (BiDirIt a = begin; a != end; a++)
+                    // {
+                    //     cout << " " << *a;
+                    // }
+                    // cout << endl;
                 }
             }
         }
