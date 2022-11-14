@@ -70,6 +70,7 @@ int main()
             array.push_back(tmp);
         }
         cout << endl;
+        PL4::sort(array.begin(), array.end());
         cout << "---Result Sorting---" << endl;
         show_vector(array);
         cout << endl;
