@@ -151,7 +151,7 @@ Mat2x2 &Mat2x2::operator*=(const Mat2x2 &mat)
 
         for (size_t j = 0; j < SIZE_COLIMN; j++)
         {
-            ref_array[i] += this->_value[i / SIZE_COLIMN][j] * mat._value[j][i / SIZE_COLIMN];
+            ref_array[i] += this->_value[j][i % SIZE_COLIMN] * mat._value[i / SIZE_COLIMN][j];
         }
     }
 
