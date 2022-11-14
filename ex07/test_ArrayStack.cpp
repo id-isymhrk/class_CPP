@@ -136,7 +136,9 @@ int main(void)
           }
           catch (const std::exception &e)
           {
-               std::cerr << "Stack is empty. Error!" << std::endl;
+               // std::cerr << "Stack is empty. Error!" << std::endl;
+               std::cerr << "Error!" << std::endl;
+               std::cout << e.what() << std::endl;
           }
 
           cout << endl;
