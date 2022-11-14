@@ -160,6 +160,37 @@ Mat2x2 &Mat2x2::operator*=(const Mat2x2 &mat)
     return *this;
 }
 
+Mat2x2 Mat2x2::operator-() const
+{
+    float *ref_array = new float[SIZE_COLIMN * SIZE_COLIMN];
+    int index = 0;
+
+    float n1 = 1, n2 = 1;
+
+    for (size_t i = SIZE_COLIMN; i > 0; i--)
+    {
+        for (size_t j = SIZE_COLIMN; j > 0; j--)
+        {
+            if (i == j)
+            {
+                ref_array[index] = this->_value[i][j];
+                n1 *= this->_value[i][j];
+            }
+            else
+            {
+                ref_array[index] = -this->_value[i][j];
+                n2 *= this->_value[i][j];
+            }
+            index++;
+        }
+    }
+    for (int i = 0; i < index; i++)
+    {
+        ref_array[i] /= (n1 - n2);
+    }
+
+    return Mat2x2(ref_array);
+}
 float Mat2x2::operator()(const int &i, const int &j)
 {
     return _value[i][j];

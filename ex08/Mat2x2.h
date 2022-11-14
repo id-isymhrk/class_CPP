@@ -24,6 +24,8 @@ public:
     Mat2x2 &operator-=(const Mat2x2 &mat);
     Mat2x2 &operator*=(const Mat2x2 &mat);
 
+    Mat2x2 operator-() const;
+
     float operator()(const int &i, const int &j);
 
     bool operator==(const Mat2x2 &mat);
