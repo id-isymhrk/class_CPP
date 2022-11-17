@@ -19,5 +19,5 @@ bool Compare(Point a, Point b)
     dist_a = sqrt(a.x * a.x + a.y * a.y + a.z * a.z);
     dist_b = sqrt(b.x * b.x + b.y * b.y + b.z * b.z);
 
-    return dist_a >= dist_b;
+    return dist_a < dist_b;
 }

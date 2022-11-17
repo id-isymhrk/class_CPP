@@ -12,7 +12,7 @@ int main()
     ShowPoints(test_point);
 
     cout << "---compare---" << endl;
-    ShowCompare(Compare(*test_point[1], *test_point[0]));
+    ShowCompare(Compare(*test_point[0], *test_point[1]));
 
     return 0;
 }
