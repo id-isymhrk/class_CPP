@@ -1,5 +1,4 @@
 #include "MyHeader.h"
-#include <vector>
 
 void ShowPoints(vector<Point *> test);
 void ShowCompare(bool flag);
@@ -9,10 +8,13 @@ int main()
     vector<Point *> test_point;
     test_point.push_back(new Point());
     test_point.push_back(new Point(1.0, 1.0, 1.0));
+    test_point.push_back(new Point(5.0, 4.0, 3.0));
+    test_point.push_back(new Point(2.0, 2.0, 2.0));
+    test_point.push_back(new Point(5.0, 5.0, 5.0));
+    test_point.push_back(new Point(1.0, 2.0, 1.0));
     ShowPoints(test_point);
 
-    cout << "---compare---" << endl;
-    ShowCompare(Compare(*test_point[0], *test_point[1]));
+    find_k_closest(3, test_point);
 
     return 0;
 }
