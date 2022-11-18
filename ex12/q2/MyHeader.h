@@ -50,9 +50,26 @@ void find_k_closest(int k, vector<Point *> &list)
 // vector<Point> find_k_closest(int k, vector<Point> &list)
 {
     stack<Point> pstack;
-    auto comp = Compare::Comp;
-    // auto comp = [&](Point a, Point b) -> bool {
-    // }
+    // auto comp = Compare::Comp;
+    auto comp = [&](Point a, Point b) -> bool
+    {
+        Point origin(0, 0, 0);
+
+        double dist_a, dist_b;
+        double x, y, z;
+
+        x = a.x - origin.x;
+        y = a.y - origin.y;
+        z = a.z - origin.z;
+        dist_a = sqrt(x * x + y * y + z * z);
+
+        x = b.x - origin.x;
+        y = b.y - origin.y;
+        z = b.z - origin.z;
+        dist_b = sqrt(x * x + y * y + z * z);
+
+        return (dist_a < dist_b);
+    };
 
     priority_queue<Point, vector<Point>, decltype(comp)> queue(comp);
     // priority_queue<Point> queue;

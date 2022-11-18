@@ -6,6 +6,8 @@ void ShowCompare(bool flag);
 int main()
 {
     vector<Point *> test_point;
+
+    cout << "---input---" << endl;
     test_point.push_back(new Point());
     test_point.push_back(new Point(1.0, 1.0, 1.0));
     test_point.push_back(new Point(5.0, 4.0, 3.0));
@@ -14,6 +16,7 @@ int main()
     test_point.push_back(new Point(1.0, 2.0, 1.0));
     ShowPoints(test_point);
 
+    cout << "---result---" << endl;
     find_k_closest(3, test_point);
 
     return 0;
