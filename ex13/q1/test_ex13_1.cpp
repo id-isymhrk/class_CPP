@@ -1,13 +1,13 @@
 #include "ex13_q1_Myheader.h"
 
-constexpr int TEST_INDEX = 1;
+constexpr int TEST_INDEX = 0;
 
 int main()
 {
     // vector<float> test = {0.0, 0.1, 0.4, 0.3, 0.1, 1.0, 0.5, 0.7, 0.4};
     vector<vector<float>> test = {
-        {0.0, 0.1, 0.4, 0.3, 0.1, 1.0, 0.5, 0.7, 0.4},
-        {0.1, 0.3, 1.1, 1.1, 0.1, 1.1, 0.1, 0.1, 1.1},
+        {0.05, 0.1, 0.4, 0.3, 0.1, 1.05, 0.5, 0.7, 0.4},
+        {0.1, 0.3, 1.1, 0.1, 1.1, 1.1, 0.1, 0.1, 1.1},
     };
     cout << "---input---" << endl;
     ShowVector(test[TEST_INDEX]);
