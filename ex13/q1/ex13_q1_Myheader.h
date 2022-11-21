@@ -15,10 +15,16 @@ void ShowVector(vector<T> array)
 
 float compute_median(vector<float> array)
 {
+    float ans = 0.0;
+
     vector<float>::iterator iter = array.begin() + array.size() / 2;
     nth_element(array.begin(), iter, array.end());
+    ans += *iter;
+    array.erase(iter);
 
-    ShowVector(array);
+    iter = array.begin() + array.size() / 2;
+    nth_element(array.begin(), iter, array.end());
+    ans += *iter;
 
-    return array[array.size() / 2];
+    return ans / 2.0;
 }
