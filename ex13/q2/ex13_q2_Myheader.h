@@ -13,12 +13,17 @@ void ShowVector(vector<T> array)
     }
 }
 
-float compute_median(vector<float> array)
+vector<float> compute_k_closest(int k, vector<float> array)
 {
-    vector<float>::iterator iter = array.begin() + array.size() / 2;
-    nth_element(array.begin(), iter, array.end());
+    vector<float> ans;
+    for (size_t i = 0; i < k; i++)
+    {
+        vector<float>::iterator iter = max_element(array.begin(), array.end());
+        cout << "max:" << i << " is " << *iter << endl;
+        ans.push_back(*iter);
+        ShowVector(array);
+        array.erase(iter);
+    }
 
-    ShowVector(array);
-
-    return array[array.size() / 2];
+    return ans;
 }
