@@ -249,10 +249,10 @@ public:
     };
 };
 
-template class Mat2x2<int, 2>;
-template class Mat2x2<float, 2>;
-template class Mat2x2<int, 3>;
-template class Mat2x2<float, 3>;
+// template class Mat2x2<int, 2>;
+// template class Mat2x2<float, 2>;
+// template class Mat2x2<int, 3>;
+// template class Mat2x2<float, 3>;
 
 template <class U, int M>
 ostream &operator<<(ostream &os, const Mat2x2<U, M> &mat)
