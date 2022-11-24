@@ -159,9 +159,13 @@ int main(void)
                     << "\"" << stack_test[i].top() << "\"" << endl;
                cout << "Can you look me?" << endl;
           }
+          catch (EmptyError &e)
+          {
+               std::cerr << "Stack is empty. Error!" << std::endl;
+               std::cout << e.what() << std::endl;
+          }
           catch (const std::exception &e)
           {
-               // std::cerr << "Stack is empty. Error!" << std::endl;
                std::cerr << "Error!" << std::endl;
                std::cout << e.what() << std::endl;
           }
