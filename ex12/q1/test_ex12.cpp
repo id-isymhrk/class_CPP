@@ -14,6 +14,7 @@ int main()
     test_point.push_back(new Point(1.0, 2.0, 1.0));
     ShowPoints(test_point);
 
+    cout << "---answer---" << endl;
     find_k_closest(3, test_point);
 
     return 0;

@@ -79,16 +79,21 @@ void find_k_closest(int k, vector<Point *> &list)
         queue.push(*list[i]);
     }
 
-    for (size_t i = 0; !queue.empty(); i++)
+    while (queue.size() > k)
     {
-        // ShowPoint(queue.top());
-        pstack.push(queue.top());
         queue.pop();
     }
 
-    for (size_t i = 0; i < k; i++)
+    for (size_t i = 0; !queue.empty(); i++)
     {
-        ShowPoint(pstack.top());
-        pstack.pop();
+        ShowPoint(queue.top());
+        // pstack.push(queue.top());
+        queue.pop();
     }
+
+    // for (size_t i = 0; i < k; i++)
+    // {
+    //     ShowPoint(pstack.top());
+    //     pstack.pop();
+    // }
 }

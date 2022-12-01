@@ -49,7 +49,7 @@ struct Compare
 void find_k_closest(int k, vector<Point *> &list)
 // vector<Point> find_k_closest(int k, vector<Point> &list)
 {
-    stack<Point> pstack;
+    // stack<Point> pstack;
     auto comp = Compare::Comp;
     // auto comp = [&](Point a, Point b) -> bool {
     // }
@@ -62,16 +62,21 @@ void find_k_closest(int k, vector<Point *> &list)
         queue.push(*list[i]);
     }
 
-    for (size_t i = 0; !queue.empty(); i++)
+    while (queue.size() > k)
     {
-        // ShowPoint(queue.top());
-        pstack.push(queue.top());
         queue.pop();
     }
 
-    for (size_t i = 0; i < k; i++)
+    for (size_t i = 0; !queue.empty(); i++)
     {
-        ShowPoint(pstack.top());
-        pstack.pop();
+        ShowPoint(queue.top());
+        // pstack.push(queue.top());
+        queue.pop();
     }
+
+    // for (size_t i = 0; i < k; i++)
+    // {
+    //     ShowPoint(pstack.top());
+    //     pstack.pop();
+    // }
 }
