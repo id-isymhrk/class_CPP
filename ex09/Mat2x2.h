@@ -179,34 +179,21 @@ public:
     Mat2x2<T, N> operator-() const
     {
         T *ref_array = new T[SIZE_COLIMN * SIZE_COLIMN];
-        int index = SIZE_COLIMN * SIZE_COLIMN - 1;
+        int index = 0;
 
-        T n1 = 1, n2 = 1;
+        // float n1 = 1, n2 = 1;
 
         for (size_t i = 0; i < SIZE_COLIMN; i++)
         {
             for (size_t j = 0; j < SIZE_COLIMN; j++)
             {
-                if (i == j)
-                {
-                    ref_array[index] = this->_value[i][j];
-                    n1 *= this->_value[i][j];
-                }
-                else
-                {
-                    ref_array[index] = -this->_value[i][j];
-                    n2 *= this->_value[i][j];
-                }
-                index--;
+                ref_array[index] = -this->_value[j][i];
+                index++;
             }
         }
         // cout << "--test--" << endl;
         // cout << Mat2x2(ref_array) << endl;
         // cout << (n1 - n2) << endl;
-        for (int i = 0; i < SIZE_COLIMN * SIZE_COLIMN; i++)
-        {
-            ref_array[i] /= (n1 - n2);
-        }
 
         return Mat2x2(ref_array);
     }
